@@ -23,9 +23,11 @@ public class LenguajeServices {
     }
 
     public Lenguajes edidLenguaje(Lenguajes lenguajes, Integer id) {
-        Optional<Lenguajes> lenguajeById = ilenguajesRepository.findById(id);
+        Lenguajes lenguajeById = ilenguajesRepository.findById(id).get();
         lenguajeById.setNombre(lenguajes.getNombre());
         lenguajeById.setTipado_fuerte(lenguajes.getTipado_fuerte());
+        lenguajeById.setFecha_lanzamiento(lenguajes.getFecha_lanzamiento());
+        ilenguajesRepository.save(lenguajeById);
         return lenguajeById;
     }
 }

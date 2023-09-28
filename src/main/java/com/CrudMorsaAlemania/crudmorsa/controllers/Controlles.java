@@ -3,10 +3,7 @@ package com.CrudMorsaAlemania.crudmorsa.controllers;
 import com.CrudMorsaAlemania.crudmorsa.models.Lenguajes;
 import com.CrudMorsaAlemania.crudmorsa.services.LenguajeServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,10 @@ public class Controlles {
     @PostMapping("/lenguaje")
     public Lenguajes postLenguaje(@RequestBody Lenguajes lenguajes) {
         return lenguajeServices.crearLengueje(lenguajes);
+    }
+
+    @PutMapping("/lenguaje/{id}")
+    public Lenguajes updateLenguaje(@RequestBody Lenguajes lenguajes, @PathVariable Integer id) {
+        return lenguajeServices.edidLenguaje(lenguajes, id);
     }
 }
